@@ -1,4 +1,5 @@
 import time
+from collections import Counter
 
 start_time = time.time()
 
@@ -12,11 +13,19 @@ f.close()
 
 duplicates = []  # Return the list of duplicates in this data structure
 
+# I believe the RUNTIME is 0(n^c)
+
 # Replace the nested for loops below with your improvements
-for name_1 in names_1:
-    for name_2 in names_2:
-        if name_1 == name_2:
-            duplicates.append(name_1)
+# for name_1 in names_1:
+#     for name_2 in names_2:
+#         if name_1 == name_2:
+#             duplicates.append(name_1)
+# double_names = (Counter(names_1) - Counter(names_2)).elements()
+# double_names = set(names_1).intersection(set(names_2))
+# duplicates.append(str(double_names))
+double_names = set(names_1).intersection(set(names_2))
+for n in double_names:
+    duplicates.append(str(n))
 
 end_time = time.time()
 print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")

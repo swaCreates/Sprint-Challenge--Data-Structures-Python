@@ -10,7 +10,7 @@ class Node:
         return self.next_node
 
     def set_next(self, new_next):
-        self.next_node = new_next
+        self.next_node = new_next # new_node
 
 class LinkedList:
     def __init__(self):
