@@ -1,19 +1,21 @@
 class RingBuffer:
     def __init__(self, capacity):
         self.capacity = int(capacity)
-        self.inventory = []
+        self.items = [None] * capacity
+        self.count = 0
+        self.used_space = 0
+
+    def __str__(self):
+        return f'{self.items}'
 
     def append(self, item):
-                
-        while len(self.inventory) <= self.capacity:
-            if len(self.inventory) <= self.capacity:
-                self.inventory.append(item)
-            elif len(self.inventory) > self.capacity:
-                # self.inventory.pop(0)
-                # self.inventory.insert(0, item)
+        self.items[self.count % len(self.items)] = item
+        self.count += 1
+
+        if self.used_space < len(self.items):
+            self.used_space += 1
 
     def get(self):
-        new_list = []
-        for el in self.inventory:
-            if el is not None:
-                new_list.append(el)
+        for i in self.items:
+            if i is not None:
+                return self.items
